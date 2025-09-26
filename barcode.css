@@ -1,0 +1,14 @@
+body {
+    background-color: white;
+}
+
+.tiles {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.barcodeInput {
+    font-size: 6em;
+    border-style: none;
+    field-sizing: content;
+}

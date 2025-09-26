@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="nor">
+    <head>
+        <title>PostNord Hyllekoder</title>
+        <link rel="stylesheet" href="barcode.css">
+	<script type="module" src="barcode.js"></script>
+	<script type="module" src="lindelBarcode.js"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Jan Olav Berg's programming portfolio, barcode generator">
+        <meta name="og:image" content="https://janolavberg.no/pictures/me_neutral_smaler.png">
+        <meta name="twitter:image:src" content="https://janolavberg.no/pictures/me_neutral_smaler.png">
+    </head>
+    <body >
+	<header>
+	</heade>
+	<main>            
+	    <ul id="barcodeContainer" class="tiles">
+		<li id="barcodeItem" class="tiles">
+		    <input class="barcodeInput"
+			maxlength="3"
+			placeholder="Hyllenavn"
+			id="barcodeInput"
+			type="TEXT" >
+		    <canvas id="barcode"></canvas>
+		</li>
+	    </ul>
+        </main>
+    </body>
+</html>
