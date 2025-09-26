@@ -8,10 +8,16 @@ let barcodeIdNumber = 0;
 barcodeInput.addEventListener("keyup", (e) => barcodeInputHandler(e));
 
 function barcodeInputHandler(e) {
+    resize(e.target);
     switch(e.key) {
 	case 'Enter': createBarcodeItem(); break;
 	default: writeBarcode(e); 
     }
+}
+
+function resize(e) {
+    //if (e.style.width < 1) e.value.length = "6em";
+    e.style.width = e.value.length + 0.5 + "ch";
 }
 
 function createBarcodeItem() {

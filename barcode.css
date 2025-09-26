@@ -2,6 +2,11 @@ body {
     background-color: white;
 }
 
+.board {
+    diplay: flex;
+    flex-direction: column;
+}
+
 .tiles {
     display: flex;
     flex-wrap: wrap;
@@ -10,5 +15,6 @@ body {
 .barcodeInput {
     font-size: 6em;
     border-style: none;
-    field-sizing: content;
+    /*text-transform: uppercase;*/
+    width: 6em;
 }
