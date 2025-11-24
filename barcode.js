@@ -1,11 +1,13 @@
 const barcodeInput = document.querySelector("#barcodeInput");
 const barcodeItemDefault = document.querySelector("#barcodeItem").cloneNode(true);
 const barcodeContainer = document.querySelector("#barcodeContainer");
+const print-button = document.querySelector("#print-button");
 const formatCode = "SEPARL";
 
 let barcodeIdNumber = 0;
 
 barcodeInput.addEventListener("keyup", (e) => barcodeInputHandler(e));
+print-button.addeventListener("click" => print());
 
 function barcodeInputHandler(e) {
     resize(e.target);
