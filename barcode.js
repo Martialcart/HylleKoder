@@ -20,6 +20,8 @@ function barcodeInputHandler(e) {
 	case 'Enter': createBarcodeItem(e); break;
 	case 'Backspace': delEmptyBarcode(e); break;
 	case 'Delete': delEmptyBarcode(e); break;
+	case 'ArrowUp': getPreviusInput(e).focus(); break;
+	case 'ArrowDown': getNextInput(e).focus(); break;
 	default: writeBarcode(e); 
     }
 }
@@ -50,10 +52,15 @@ function delEmptyBarcode(e) {
 
     } else {
 	writeBarcode(e);
+    }
 }
 
 function getPreviusInput(e) {
     return e.srcElement.parentNode.previousSibling.querySelector("input");
+}
+
+function getNextInput(e) {
+    return e.srcElement.parentNode.nextSibling.querySelector("input");
 }
 
 function createBarcodeItem(e) {
@@ -92,5 +99,4 @@ function writeBarcode(e) {
 	}); 
     }
 }
-
 
