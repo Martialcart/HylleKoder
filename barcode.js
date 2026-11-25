@@ -3,6 +3,8 @@ const barcodeItemDefault = document.querySelector("#barcodeItem").cloneNode(true
 const barcodeContainer = document.querySelector("#barcodeContainer");
 const formatCode = "SEPARL";
 
+
+let prevEmptyParentId = null;
 let barcodeIdNumber = 0;
 
 barcodeInput.addEventListener("keyup", (e) => barcodeInputHandler(e));
@@ -10,7 +12,9 @@ barcodeInput.addEventListener("keyup", (e) => barcodeInputHandler(e));
 function barcodeInputHandler(e) {
     resize(e.target);
     switch(e.key) {
-	case 'Enter': createBarcodeItem(); break;
+	case 'Enter': createBarcodeItem(e); break;
+	case 'Backspace': delEmptyBarcode(e); break;
+	case 'Delete': delEmptyBarcode(e); break;
 	default: writeBarcode(e); 
     }
 }
@@ -18,6 +22,28 @@ function barcodeInputHandler(e) {
 function resize(e) {
     //if (e.style.width < 1) e.value.length = "6em";
     e.style.width = e.value.length + 0.5 + "ch";
+function delEmptyBarcode(e) {
+    console.log("delBarcode");
+    const barcodeParent = e.srcElement.parentNode;
+    const parentId = barcodeParent.id;
+    const previousInput = getPreviusInput(e);
+    const barcode = e.target.value;
+    console.log(barcode);
+    console.log(barcode.length < 0);
+
+    if (barcode.length <= 0) {
+	if (prevEmptyParentId == parentId) {
+	    barcodeParent.remove();
+	    previousInput.focus();
+	}
+	prevEmptyParentId = parentId;
+
+    } else {
+	writeBarcode(e);
+}
+
+function getPreviusInput(e) {
+    return e.srcElement.parentNode.previousSibling.querySelector("input");
 }
 
 function createBarcodeItem() {
@@ -42,6 +68,7 @@ function createBarcodeItem() {
 }
 
 function writeBarcode(e) {
+    prevEmptyParentId = null;
     const input = e.srcElement;
     if(input.value !== "") {
 	const id = e.srcElement.parentNode.querySelector("canvas").id;
