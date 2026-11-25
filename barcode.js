@@ -14,6 +14,7 @@ let barcodeIdNumber = 0;
 barcodeInput.addEventListener("keyup", (e) => barcodeInputHandler(e));
 
 function barcodeInputHandler(e) {
+    console.log(e.key);
     resize(e.target);
     switch(e.key) {
 	case 'Enter': createBarcodeItem(e); break;
