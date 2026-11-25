@@ -3,6 +3,9 @@ const barcodeItemDefault = document.querySelector("#barcodeItem").cloneNode(true
 const barcodeContainer = document.querySelector("#barcodeContainer");
 const formatCode = "SEPARL";
 const inputPlaceHolder = "Hyllenavn";
+const placeholderWidth = "12em";
+const maxChars = 3;
+const charWidthFactor = 1.3;
 
 
 let prevEmptyParentId = null;
@@ -21,8 +24,13 @@ function barcodeInputHandler(e) {
 }
 
 function resize(e) {
-    //if (e.style.width < 1) e.value.length = "6em";
-    e.style.width = e.value.length + 0.5 + "ch";
+    if (e.value.length < 1) {
+	e.style.width = placeholderWidth;
+    } else {
+	e.style.width = maxChars * charWidthFactor + "ch";
+    }
+}
+
 function delEmptyBarcode(e) {
     console.log("delBarcode");
     const barcodeParent = e.srcElement.parentNode;
