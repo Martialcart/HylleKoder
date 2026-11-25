@@ -2,6 +2,7 @@ const barcodeInput = document.querySelector("#barcodeInput");
 const barcodeItemDefault = document.querySelector("#barcodeItem").cloneNode(true);
 const barcodeContainer = document.querySelector("#barcodeContainer");
 const formatCode = "SEPARL";
+const inputPlaceHolder = "Hyllenavn";
 
 
 let prevEmptyParentId = null;
@@ -46,7 +47,7 @@ function getPreviusInput(e) {
     return e.srcElement.parentNode.previousSibling.querySelector("input");
 }
 
-function createBarcodeItem() {
+function createBarcodeItem(e) {
     barcodeIdNumber++;
 
     const tempBarcodeItem = barcodeItemDefault.cloneNode("true");//store clone of default
@@ -60,11 +61,15 @@ function createBarcodeItem() {
     //attach eventlistener to input
     barInput.addEventListener("keyup",(e) => barcodeInputHandler(e)); 
 
-    //add barcodeItem to document 
-    barcodeContainer.appendChild(tempBarcodeItem);
+    //reset input placeholder
+    barInput.value = "";
+
+    //add barcodeItem to document
+    e.srcElement.parentNode.insertAdjacentElement("afterend", tempBarcodeItem);
     
     //set focus to new barcodeInput
     barInput.focus();
+    writeBarcode(e);
 }
 
 function writeBarcode(e) {
