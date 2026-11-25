@@ -18,3 +18,9 @@ body {
     /*text-transform: uppercase;*/
     width: 6em;
 }
+
+@media print {
+    header, footer {
+        visibility: hidden;
+    }
+}
