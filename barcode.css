@@ -63,7 +63,16 @@ button:focus-visible {
 
 
 @media print {
-    header, footer, .tool {
+    heabder, footer, .tool {
         visibility: hidden;
+    }
+}
+
+@media (max-width: 742px) {
+    .tool {
+        position: relative;
+        right: 24em;
+    }
+    .board {
     }
 }
