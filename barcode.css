@@ -70,7 +70,7 @@ button:focus-visible {
 
 
 @media print {
-    heabder, footer, .tool {
+    header, footer, .tool {
         visibility: hidden;
     }
 }
