@@ -11,6 +11,8 @@ const charWidthFactor = 1.3;
 let prevEmptyParentId = null;
 let barcodeIdNumber = 0;
 
+console.log = () => {};
+
 barcodeInput.addEventListener("keyup", (e) => barcodeInputHandler(e));
 
 function barcodeInputHandler(e) {
