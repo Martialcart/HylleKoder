@@ -105,7 +105,11 @@ function handleCreateClick(e) {
     barInput.value = "";
 
     //add barcodeItem to document
-    e.srcElement.parentNode.parentNode.insertAdjacentElement("afterend", tempBarcodeItem);
+    const listElement = e.srcElement.parentNode.parentNode;
+    console.log(listElement.tagName);
+    if(listElement.tagName == "LI") {
+	listElement.insertAdjacentElement("afterend", tempBarcodeItem);
+    }
     
     //set focus to new barcodeInput
     barInput.focus();
