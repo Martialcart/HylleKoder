@@ -79,10 +79,11 @@ button:focus-visible {
 }
 
 @media (max-width: 826px) {
+    body {
+        align-items: start;
+    }
     .tool {
         position: relative;
         right: 17.7em;
-    }
-    .board {
     }
 }
