@@ -37,9 +37,14 @@ button:focus-visible {
     font-size: 6em;
     border-style: none;
     /*text-transform: uppercase;*/
-    width: 6em;
+    width: 5em;
 }
 
+.tool {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
 .icon {
     width: 24px;
@@ -58,7 +63,7 @@ button:focus-visible {
 
 
 @media print {
-    header, footer {
+    header, footer, .tool {
         visibility: hidden;
     }
 }

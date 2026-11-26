@@ -72,6 +72,19 @@
 			type="TEXT"
 			autofocus >
 		    <canvas id="barcode"></canvas>
+		    <div class="tool">
+			
+			<button onclick="window.handleCreateClick(event)">
+			    <svg class="icon"><use href="#i-barcode"/></svg>
+			    Ny Strekode
+			    <svg class="icon"><use href="#i-enter"/></svg>
+			</button>
+			<button onclick="window.handleDeleteClick(event)">
+			    <svg class="icon"><use href="#i-delete"/></svg>
+			    Fjern
+			    <svg class="icon"><use href="#i-backspace"/></svg>
+			</button>
+		    </div>
 		</li>
 	    </ul>
         </main>

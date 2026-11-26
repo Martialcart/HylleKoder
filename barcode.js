@@ -3,7 +3,7 @@ const barcodeItemDefault = document.querySelector("#barcodeItem").cloneNode(true
 const barcodeContainer = document.querySelector("#barcodeContainer");
 const formatCode = "SEPARL";
 const inputPlaceHolder = "Hyllenavn";
-const placeholderWidth = "12em";
+const placeholderWidth = "5em";
 const maxChars = 3;
 const charWidthFactor = 1.3;
 
@@ -35,7 +35,6 @@ function resize(e) {
 }
 
 function delEmptyBarcode(e) {
-    console.log("delBarcode");
     const barcodeParent = e.srcElement.parentNode;
     const parentId = barcodeParent.id;
     const previousInput = getPreviusInput(e);
@@ -53,6 +52,13 @@ function delEmptyBarcode(e) {
     } else {
 	writeBarcode(e);
     }
+}
+
+function handleDeleteClick(e) {
+    const barcodeParent = e.srcElement.parentNode.parentNode;
+    const previousInput = e.srcElement.parentNode.parentNode.previousSibling.querySelector("input");
+	    barcodeParent.remove();
+	    previousInput.focus();
 }
 
 function getPreviusInput(e) {
@@ -88,6 +94,29 @@ function createBarcodeItem(e) {
     writeBarcode(e);
 }
 
+function handleCreateClick(e) {
+    const tempBarcodeItem = barcodeItemDefault.cloneNode("true");//store clone of default
+    const barInput = tempBarcodeItem.querySelector("input");
+    
+    //set unique id's
+    tempBarcodeItem.id += barcodeIdNumber;
+    barInput.id += barcodeIdNumber;
+    tempBarcodeItem.querySelector("canvas").id += barcodeIdNumber;
+
+    //attach eventlistener to input
+    barInput.addEventListener("keyup",(e) => barcodeInputHandler(e)); 
+
+    //reset input placeholder
+    barInput.value = "";
+
+    //add barcodeItem to document
+    e.srcElement.parentNode.parentNode.insertAdjacentElement("afterend", tempBarcodeItem);
+    
+    //set focus to new barcodeInput
+    barInput.focus();
+    writeBarcode(e);
+}
+
 function writeBarcode(e) {
     prevEmptyParentId = null;
     const input = e.srcElement;
@@ -100,3 +129,5 @@ function writeBarcode(e) {
     }
 }
 
+window.handleDeleteClick = handleDeleteClick;
+window.handleCreateClick = handleCreateClick;
