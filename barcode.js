@@ -2,7 +2,7 @@ const barcodeInput = document.querySelector("#barcodeInput");
 const barcodeItemDefault = document.querySelector("#barcodeItem").cloneNode(true);
 const barcodeContainer = document.querySelector("#barcodeContainer");
 const formatCode = "SEPARL";
-const inputPlaceHolder = "Hyllenavn";
+const inputPlaceHolder = "A1";
 const placeholderWidth = "5em";
 const maxChars = 3;
 const charWidthFactor = 1.3;
@@ -15,7 +15,6 @@ barcodeInput.addEventListener("keyup", (e) => barcodeInputHandler(e));
 
 function barcodeInputHandler(e) {
     console.log(e.key);
-    resize(e.target);
     switch(e.key) {
 	case 'Enter': createBarcodeItem(e); break;
 	case 'Backspace': delEmptyBarcode(e); break;
@@ -23,14 +22,6 @@ function barcodeInputHandler(e) {
 	case 'ArrowUp': getPreviusInput(e).focus(); break;
 	case 'ArrowDown': getNextInput(e).focus(); break;
 	default: writeBarcode(e); 
-    }
-}
-
-function resize(e) {
-    if (e.value.length < 1) {
-	e.style.width = placeholderWidth;
-    } else {
-	e.style.width = maxChars * charWidthFactor + "ch";
     }
 }
 
@@ -56,9 +47,13 @@ function delEmptyBarcode(e) {
 
 function handleDeleteClick(e) {
     const barcodeParent = e.srcElement.parentNode.parentNode;
+    const input = e.srcElement.parentNode.parentNode.querySelector("input");
+    input.value = "";
     const previousInput = e.srcElement.parentNode.parentNode.previousSibling.querySelector("input");
-	    barcodeParent.remove();
-	    previousInput.focus();
+    barcodeParent.remove();
+    if (Boolean(previousInput)) {
+	previousInput.focus();
+    }
 }
 
 function getPreviusInput(e) {

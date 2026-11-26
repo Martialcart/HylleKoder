@@ -37,7 +37,7 @@ button:focus-visible {
     font-size: 6em;
     border-style: none;
     /*text-transform: uppercase;*/
-    width: 5em;
+    width: 3em;
 }
 
 .tool {
@@ -68,10 +68,10 @@ button:focus-visible {
     }
 }
 
-@media (max-width: 742px) {
+@media (max-width: 826px) {
     .tool {
         position: relative;
-        right: 24em;
+        right: 17.7em;
     }
     .board {
     }
